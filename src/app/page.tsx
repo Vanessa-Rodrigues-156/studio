@@ -1,3 +1,5 @@
+'use client';
+
 import {DragDropContext, DropResult} from 'react-beautiful-dnd';
 import TaskColumn from '@/components/TaskColumn';
 import TaskBlock from '@/components/TaskBlock';

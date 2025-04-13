@@ -187,50 +187,66 @@ export default function Home() {
       <AlertDialog open={open} onOpenChange={setOpen}>
         <AlertDialogTrigger asChild>
           <Button className="m-4" onClick={() => setOpen(true)}>
-            <PlusIcon className="mr-2 h-4 w-4"/>
-            Create New Task
+        <PlusIcon className="mr-2 h-4 w-4"/>
+        Create New Task
           </Button>
         </AlertDialogTrigger>
         <AlertDialogContent>
           <AlertDialogHeader>
-            <AlertDialogTitle>Create New Task</AlertDialogTitle>
-            <AlertDialogDescription>
-              Fill in the details for your new task.
-            </AlertDialogDescription>
+        <AlertDialogTitle>Create New Task</AlertDialogTitle>
+        <AlertDialogDescription>
+          Fill in the details for your new task.
+        </AlertDialogDescription>
           </AlertDialogHeader>
           <div className="grid gap-4 py-4">
-            <div className="grid grid-cols-4 items-center gap-4">
-              <Label htmlFor="headline" className="text-right">
-                Headline
-              </Label>
-              <Input type="text" id="headline" name="headline" value={newTask.headline}
-                     onChange={handleInputChange} className="col-span-3"/>
-            </div>
-            <div className="grid grid-cols-4 items-center gap-4">
-              <Label htmlFor="description" className="text-right">
-                Description
-              </Label>
-              <Input type="text" id="description" name="description" value={newTask.description}
-                     onChange={handleInputChange} className="col-span-3"/>
-            </div>
-            <div className="grid grid-cols-4 items-center gap-4">
-              <Label htmlFor="prerequisites" className="text-right">
-                Prerequisites
-              </Label>
-              <Input type="text" id="prerequisites" name="prerequisites" value={newTask.prerequisites}
-                     onChange={handleInputChange} className="col-span-3"/>
-            </div>
-            <div className="grid grid-cols-4 items-center gap-4">
-              <Label htmlFor="deadline" className="text-right">
-                Deadline
-              </Label>
-              <Input type="date" id="deadline" name="deadline" value={newTask.deadline}
-                     onChange={handleInputChange} className="col-span-3"/>
-            </div>
+        <div className="grid grid-cols-4 items-center gap-4">
+          <Label htmlFor="headline" className="text-right">
+            Headline
+          </Label>
+          <Input type="text" id="headline" name="headline" value={newTask.headline}
+             onChange={handleInputChange} className="col-span-3"/>
+        </div>
+        <div className="grid grid-cols-4 items-center gap-4">
+          <Label htmlFor="description" className="text-right">
+            Description
+          </Label>
+          <Input type="text" id="description" name="description" value={newTask.description}
+             onChange={handleInputChange} className="col-span-3"/>
+        </div>
+        <div className="grid grid-cols-4 items-center gap-4">
+          <Label htmlFor="prerequisites" className="text-right">
+            Prerequisites
+          </Label>
+          <Input type="text" id="prerequisites" name="prerequisites" value={newTask.prerequisites}
+             onChange={handleInputChange} className="col-span-3"/>
+        </div>
+        <div className="grid grid-cols-4 items-center gap-4">
+          <Label htmlFor="deadline" className="text-right">
+            Deadline
+          </Label>
+          <Input type="date" id="deadline" name="deadline" value={newTask.deadline}
+             onChange={handleInputChange} className="col-span-3"/>
+        </div>
+        <div className="grid grid-cols-4 items-center gap-4">
+          <Label htmlFor="files" className="text-right">
+            Files
+          </Label>
+          <Input type="file" id="files" name="files" multiple
+             onChange={(e) => setNewTask({...newTask, files: Array.from(e.target.files || []).map(file => file.name)})}
+             className="col-span-3"/>
+        </div>
+        <div className="grid grid-cols-4 items-center gap-4">
+          <Label htmlFor="reminders" className="text-right">
+            Reminders
+          </Label>
+          <Input type="text" id="reminders" name="reminders" value={newTask.reminders.join(', ')}
+             onChange={(e) => setNewTask({...newTask, reminders: e.target.value.split(',').map(reminder => reminder.trim())})}
+             placeholder="Comma-separated reminders" className="col-span-3"/>
+        </div>
           </div>
           <AlertDialogFooter>
-            <AlertDialogCancel>Cancel</AlertDialogCancel>
-            <AlertDialogAction onClick={handleCreateTask}>Create</AlertDialogAction>
+        <AlertDialogCancel>Cancel</AlertDialogCancel>
+        <AlertDialogAction onClick={handleCreateTask}>Create</AlertDialogAction>
           </AlertDialogFooter>
         </AlertDialogContent>
       </AlertDialog>

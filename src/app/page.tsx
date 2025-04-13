@@ -61,7 +61,7 @@ export default function Home() {
   });
   const [open, setOpen] = useState(false);
 
-  const [columns, setColumns] = useState({
+  const [columns, setColumns] = useState<Record<string, { id: string; title: string; taskIds: string[] }>>({
     'column-1': {
       id: 'column-1',
       title: 'To Do',
